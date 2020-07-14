@@ -1,14 +1,17 @@
-import functools
+# import functools
 import pandas as pd
 import tensorflow as tf
 
 df = pd.read_csv("./heart.csv")
 
 
-print(df.thal)
-df.thal = pd.Categorical(df.thal)
-df.thal = df.thal.cat.codes
-print(df.thal)
+df.thal = pd.Categorical(df.thal)  # * 'thal' 열은 혼자 object 이므로 이산숫자로 변환해줘야한다
+df.thal = df.thal.cat.codes  # * 이산숫자로 변환하기위해서는 먼저 카테고리컬 형태로 바꾸어주고 cat.codes를 사용한다
+
+# ? 이 데이터 프레임에는 feature 컬럼 여러개와
+# ? target 컬럼 한개로 구성되어있다.
+# ? feature 는 input, target은 label 이라고 생각하면 된다
+
 # import numpy as np
 # import keras
 # import tensorflow as tf
