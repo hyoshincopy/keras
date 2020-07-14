@@ -1,7 +1,7 @@
 # import functools
 import pandas as pd
 import tensorflow as tf
-
+import numpy as np
 df = pd.read_csv("./heart.csv")
 
 
@@ -12,23 +12,14 @@ df.thal = df.thal.cat.codes  # * 이산숫자로 변환하기위해서는 먼저
 # ? target 컬럼 한개로 구성되어있다.
 # ? feature 는 input, target은 label 이라고 생각하면 된다
 
-# import numpy as np
-# import keras
-# import tensorflow as tf
-# model = tf.keras.models.Sequential([
-#     tf.keras.layers.Dense(10, input_shape=[1, 35]),
-#     tf.keras.layers.Dense(10, activation='relu'),
-#     tf.keras.layers.Dense(20, activation='softmax')
-# ])
 
+target = df.pop('target')  # *  레이블만 따로 떼어서 저장하자
 
-# train_file_path = tf.keras.utils.get_file()
-# test_file_path = tf.keras.utils.get_file("b.csv", TEST_DATA_URL)
+dataset = tf.data.Dataset.from_tensor_slices(
 
-# tf.keras.utils
-# model.compile(optimizer='adam',
-#               loss='sparse_categorical_crossentropy',
-#               metrics=['accuracy'])
+    (df.values, target.values)
 
+)
 
-# model.fit(x_train, y_label, epochs=5)
+for feat, targ in dataset.take(5):
+    print('F:{}, T: {}'.format(feat, targ))
