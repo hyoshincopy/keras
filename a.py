@@ -1,8 +1,10 @@
 import pandas as pd
 import tensorflow as tf
 
-df = pd.read_csv("./a_12.csv")
+df = pd.read_csv("./heart.csv")
 
+df.thal = pd.Categorical(df.thal)
+df.thal = df.thal.cat.codes
 print(df.head())
 # import functools
 # import numpy as np
