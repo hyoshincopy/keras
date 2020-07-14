@@ -3,9 +3,11 @@ import tensorflow as tf
 
 df = pd.read_csv("./heart.csv")
 
+
+print(df.thal)
 df.thal = pd.Categorical(df.thal)
 df.thal = df.thal.cat.codes
-print(df.head())
+print(df.thal)
 # import functools
 # import numpy as np
 # import keras
