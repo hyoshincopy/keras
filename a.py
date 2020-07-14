@@ -21,5 +21,26 @@ dataset = tf.data.Dataset.from_tensor_slices(
 
 )
 
+# * dataset.take(5) 를 사용하여 dataset에 들어있는 다섯개의 데이터를 출력
 for feat, targ in dataset.take(5):
     print('F:{}, T: {}'.format(feat, targ))
+
+train_dataset = dataset.shuffle(len(df)).batch(1)  # * 데이터셋을 섞고 묶는다
+
+
+def get_compiled_model():
+    model = tf.keras.Sequential([
+
+        tf.keras.layers.Dense(10, activation='relu'),
+        tf.keras.layers.Dense(10, activation='relu'),
+        tf.keras.layers.Dense(1, activation='sigmoid')
+
+    ])
+
+    model.compile(optimizer='adam', loss='binary_crossentropy',
+                  metrics=['accuracy'])
+    return model
+
+
+model = get_compiled_model()
+model.fit(train_dataset, epochs=15)
