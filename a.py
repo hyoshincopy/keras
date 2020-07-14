@@ -1,3 +1,4 @@
+import functools
 import pandas as pd
 import tensorflow as tf
 
@@ -8,7 +9,6 @@ print(df.thal)
 df.thal = pd.Categorical(df.thal)
 df.thal = df.thal.cat.codes
 print(df.thal)
-# import functools
 # import numpy as np
 # import keras
 # import tensorflow as tf
