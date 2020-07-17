@@ -45,7 +45,7 @@ plt.subplot(131)
 sns.barplot('pclass', 'survived', data=raw_data)
 plt.subplot(132)
 sns.barplot('age_cat', 'survived', data=raw_data)
-a = 15
+a = 20
 plt.subplot(133)
 sns.barplot('sex', 'survived', data=raw_data)
 plt.subplots_adjust(top=1, bottom=0.1, left=0.10,
