@@ -2,6 +2,8 @@ import functools
 import pandas as pd
 import tensorflow as tf
 import numpy as np
+
+#! csv 파일을 불러오는 법
 df = pd.read_csv("./heart.csv")
 
 
