@@ -43,4 +43,4 @@ def get_compiled_model():
 
 
 model = get_compiled_model()
-model.fit(train_dataset, epochs=15)
+model.fit(train_dataset, epochs=10)
