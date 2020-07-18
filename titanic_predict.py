@@ -47,4 +47,4 @@ model.compile(loss='mse', optimizer='Adam', metrics=['accuracy'])
 model.summary()
 
 
-print(122)
+print(4)
