@@ -35,11 +35,8 @@ df = pd.DataFrame(np.random.randn(6, 4), index=dates, columns=list('ABCD'))
 # ? pd.describe()는 DataFrame의 간단한 통계정보를 보여준다
 # print(df.describe())
 # * mean은 평균, std는 표준편차, 25% 50% 75%는 4분위수
-
-
-df = pd.DataFrame(
-    index=["a", "b", "c"],
-    columns=["A", "B", "C", "D"])
-
-print(df)
-# print(df.loc[df.B == 11]["C"])
+train_data = pd.read_csv("train.csv")
+women = train_data.loc[train_data.Sex == 'female']["Survived"]
+rate_women = sum(women)/len(women)
+print(women)
+# print("% of women who survived:", rate_women)
