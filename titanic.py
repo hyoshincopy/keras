@@ -38,16 +38,23 @@ raw_data = pd.read_excel('titanic.xls')
 #             annot=True, cmap=plt.cm.viridis, linecolor="white")
 # plt.title('Correlation between features')
 # ? 서로 연관있어 보이는 데이터가 무엇인지 찾기위해 상관계수를 확인
-raw_data['age_cat'] = pd.cut(raw_data['age'], bins=[0, 10, 20, 50, 100],
-                             include_lowest=True, labels=['baby', 'teenage', 'adult', 'old'])
-plt.figure(figsize=[12, 4])  # * figsize 는 가로x세로 인치단위
-plt.subplot(131)
-sns.barplot('pclass', 'survived', data=raw_data)
-plt.subplot(132)
-sns.barplot('age_cat', 'survived', data=raw_data)
-a = 20
-plt.subplot(133)
-sns.barplot('sex', 'survived', data=raw_data)
-plt.subplots_adjust(top=1, bottom=0.1, left=0.10,
-                    right=1, hspace=0.5, wspace=0.5)
+# ? 나이별로 묶기 위해 age_cat 속성을 하나 만들고 세개의 플롯을 만듭니다
+# raw_data['age_cat'] = pd.cut(raw_data['age'], bins=[0, 10, 20, 50, 100],
+#                              include_lowest=True, labels=['baby', 'teenage', 'adult', 'old'])
+# plt.figure(figsize=[12, 4])  # * figsize 는 가로x세로 인치단위
+# plt.subplot(131)  # * 1x3 개의 1번째 플롯
+# sns.barplot('pclass', 'survived', data=raw_data)
+# plt.subplot(132)  # * 1x3 개의 2번째 플롯
+# sns.barplot('age_cat', 'survived', data=raw_data)
+# plt.subplot(133)
+# sns.barplot('sex', 'survived', data=raw_data)
+# plt.subplots_adjust(top=1, bottom=0.1, left=0.10,
+#                     right=1, hspace=0.5, wspace=0.5)
+# ? 나이별로 묶기 위해 age_cat 속성을 하나 만들고 세개의 플롯을 만듭니다
+f, ax = plt.subplots(1, 2, figsize=(12, 6))
+sns.countplot('sex', data=raw_data, ax=ax[0])
+ax[0].set_title('Count of Passengers by Sex')
+
+sns.countplot('sex', hue='survived', data=raw_data, ax=ax[1])
+ax[1].set_title('Sex:Survived vs Dead')
 plt.show()
