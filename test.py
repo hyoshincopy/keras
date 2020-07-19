@@ -1,4 +1,7 @@
+
+
 # import tensorflow as tf
+#! 참조 https://www.kaggle.com/jameskhoo/deep-learning-with-keras-and-tensorflow
 import numpy as np
 import pandas as pd
 import keras
@@ -63,5 +66,27 @@ def transform_features(df):
 
 #! simplify_ 함수를 통해서 크고 복잡한 값들을 작은 값으로 대체한다
 
-print(transform_features(x_train))
-print(transform_features(x_test))
+model = keras.models.Sequential()
+# ? input_shape 인 입력 형태인데, 전체 columns의 개수는 6개인데
+# ? 그 중 학습 할 column은 NAME과 BMI를 제외한 4가지 이므로 input_shape=(4,) 가 된다
+model.add(keras.layers.Dense(32, activation='relu', input_shape=(4,)))
+model.add(keras.layers.Dense(32, activation='relu'))
+# model.add(keras.layers.Dense(8, activation='relu'))
+model.add(keras.layers.Dense(1, activation='sigmoid'))
+# ? 출처에서는 RMSprop 옵티마이저를 사용했다
+# model.compile(optimizer=keras.optimizers.SGD(learning_rate=0.001),loss=keras.losses.categorical_crossentropy,metrics=keras.metrics.BinaryAccuracy)
+model.compile(optimizer=keras.optimizers.RMSprop(learning_rate=0.001),
+              loss=keras.losses.categorical_crossentropy, metrics=keras.metrics.BinaryAccuracy)
+
+y_train = np.asarray(y_train)
+x_train = np.asarray(x_train)
+x_test = np.asarray(x_test)
+
+validation_size = 200
+x_val = x_train[:validation_size]
+partial_x_train = x_train[validation_size:]
+
+y_val = y_train[:validation_size]
+partial_y_train = y_train[validation_size:]
+history = model.fit(partial_x_train, partial_y_train,
+                    epochs=30, validation_data=(x_val, y_val))
