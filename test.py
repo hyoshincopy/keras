@@ -5,6 +5,7 @@
 import numpy as np
 import pandas as pd
 import keras
+import matplotlib.pyplot as plt
 training_set = pd.read_csv("./number.csv")
 testing_set = pd.read_csv("./number_test.csv")
 
@@ -64,6 +65,9 @@ def transform_features(df):
     return df
 
 
+transform_features(x_train)
+transform_features(x_test)
+
 #! simplify_ 함수를 통해서 크고 복잡한 값들을 작은 값으로 대체한다
 
 model = keras.models.Sequential()
@@ -76,17 +80,23 @@ model.add(keras.layers.Dense(1, activation='sigmoid'))
 # ? 출처에서는 RMSprop 옵티마이저를 사용했다
 # model.compile(optimizer=keras.optimizers.SGD(learning_rate=0.001),loss=keras.losses.categorical_crossentropy,metrics=keras.metrics.BinaryAccuracy)
 model.compile(optimizer=keras.optimizers.RMSprop(learning_rate=0.001),
-              loss=keras.losses.categorical_crossentropy, metrics=keras.metrics.BinaryAccuracy)
+              loss=keras.losses.binary_crossentropy,
+              metrics=[keras.metrics.binary_accuracy]
 
+              )
 y_train = np.asarray(y_train)
 x_train = np.asarray(x_train)
 x_test = np.asarray(x_test)
 
-validation_size = 200
+# ? validation_size는 batch_size와 같다.(많은 양의 학습 시 몇 개씩 끊어서 할 것인가?)
+# ? 배치사이즈는 학습데이터가 n개가 있다면 최대 n-1개까지 설정가능하다. 그 이상 설정 시 에러
+validation_size = 1
+
 x_val = x_train[:validation_size]
 partial_x_train = x_train[validation_size:]
 
 y_val = y_train[:validation_size]
 partial_y_train = y_train[validation_size:]
+
 history = model.fit(partial_x_train, partial_y_train,
                     epochs=30, validation_data=(x_val, y_val))
