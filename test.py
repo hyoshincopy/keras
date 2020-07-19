@@ -23,7 +23,31 @@ def simplify_ages(df):
     df['age'] = categories.cat.codes
     return df
 
+# ? 키를 그룹화 하여 반환한다
 
-tmp = simplify_ages(x_train)
 
-print(tmp)
+def simplify_height(df):
+    bins = (0, 160, 175, 185, 200)
+    group_names = ['Short', 'Standard', 'Long', 'Very Long']
+    categories = pd.cut(df['height'], bins, labels=group_names)
+    df['height'] = categories.cat.codes
+    return df
+
+# ? 성별은 그룹화 할 필요 없어보이지만, 성별은 str 자료형이므로 이산데이터로 변경해야 한다
+
+
+def simplify_gender(df):
+    df['gender'] = pd.Categorical(df['gender'])
+    df['gender'] = df['gender'].cat.codes
+    return df
+
+
+def transform_features(df):
+    df = simplify_ages(df)
+    df = simplify_gender(df)
+    df = simplify_height(df)
+    return df
+
+
+transform_features(x_train)
+transform_features(x_test)
