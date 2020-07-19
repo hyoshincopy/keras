@@ -16,10 +16,14 @@ features.remove("posture")
 y = train_data["posture"]
 
 # //features = ["gender", "height", "weight"]
-X = pd.get_dummies(train_data[features])
-X_test = pd.get_dummies(test_data[features])
+# X = pd.get_dummies(train_data[features])
+X = pd.get_dummies(train_data)
 
-model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
+# X_test = pd.get_dummies(test_data[features])
+X_test = pd.get_dummies(test_data)
+
+model = RandomForestClassifier(
+    n_estimators=100, max_depth=5, random_state=1, max_features=10)
 model.fit(X, y)
 predictions = model.predict(X_test)
 
