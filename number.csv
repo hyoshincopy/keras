@@ -1,21 +1,21 @@
 age,gender,height,weight,BMI,NAME
-28,man,172,95,1,park ji seong
+47,man,172,95,1,park ji seong
 22,man,180,61,0,kim heu yeon
-21,man,173,90,1,karam
-24,man,171,72,0,tae ho
+19,man,173,90,1,karam
+17,man,171,72,0,tae ho
 23,girl,158,49,0,choi
 26,man,170,91,1,lee
 ,man,155,69,1,han
 ,girl,158,80,1,gang
 23,girl,151,55,0,seong
-26,man,160,62,0,ji
-26,man,172,102,1,yong
-23,girl,160,44,0,ahn
-23,girl,154,49,0,kim
-26,man,178,102,1,yoon
-26,man,162,111,1,shin
-23,girl,154,49,0,jo
-23,girl,150,65,1,namgoong
-23,girl,172,49,0,bae
-26,man,192,89,0,lim
+10,man,160,62,0,ji
+5,man,172,102,1,yong
+34,girl,160,44,0,ahn
+34,girl,154,49,0,kim
+46,man,178,102,1,yoon
+42,man,162,111,1,shin
+11,girl,154,49,0,jo
+18,girl,150,65,1,namgoong
+27,girl,172,49,0,bae
+31,man,192,89,0,lim
 26,man,178,120,1,gi
