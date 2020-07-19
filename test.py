@@ -90,7 +90,7 @@ x_test = np.asarray(x_test)
 
 # ? validation_size는 batch_size와 같다.(많은 양의 학습 시 몇 개씩 끊어서 할 것인가?)
 # ? 배치사이즈는 학습데이터가 n개가 있다면 최대 n-1개까지 설정가능하다. 그 이상 설정 시 에러
-validation_size = 1
+validation_size = 5
 
 x_val = x_train[:validation_size]
 partial_x_train = x_train[validation_size:]
@@ -100,3 +100,18 @@ partial_y_train = y_train[validation_size:]
 
 history = model.fit(partial_x_train, partial_y_train,
                     epochs=30, validation_data=(x_val, y_val))
+acc = history.history['binary_accuracy']
+val_acc = history.history['val_binary_accuracy']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(1, len(acc) + 1)
+plt.plot(epochs, loss, 'bo', label='Training loss')
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+
+plt.legend()
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.show()
+
+#! 좋은 모델과 안좋은 모델 참조) https://kevinthegrey.tistory.com/136
