@@ -6,5 +6,5 @@ plt.figure()  # ? 먼저 액자를 만들어 준다
 plt.subplot(211)
 
 plt.subplot(212)
-print("133")
+print("1553")
 plt.show()
