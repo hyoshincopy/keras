@@ -19,6 +19,8 @@ y = train_data["posture"]
 # X = pd.get_dummies(train_data[features])
 X = pd.get_dummies(train_data)
 
+
+print(X)
 # X_test = pd.get_dummies(test_data[features])
 X_test = pd.get_dummies(test_data)
 

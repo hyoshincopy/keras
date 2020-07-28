@@ -1,6 +1,6 @@
 # My first obesity model
 
-https://www.kaggle.com/jameskhoo/deep-learning-with-keras-and-tensorflow 참조 <br>
+https://www.kaggle.com/jameskhoo/deep-learning-with-keras-and-tensorflow (reference) <br>
 ***
 Pandas Function or Attribute
 ===============
@@ -30,7 +30,7 @@ Pandas Function or Attribute
 
 <strong>4. df.categories.cat.codes </strong>
 
-* Change data into discrete data.( discrete data: 이산데이터)
+* Change data into discrete data.
 * how to use: <br>
     ```bins = (0, 10, 20, 30, 40, 50)```<br>
     ```group_names = ['Baby', 'Teenager', 'Young Adult', 'Adult', 'Senior']```<br>
