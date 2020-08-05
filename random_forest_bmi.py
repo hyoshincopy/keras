@@ -5,7 +5,7 @@ import pandas as pd
 train_data = pd.read_csv("./number.csv")
 test_data = pd.read_csv("./number_test.csv")
 
-
+pd.read_csv()
 y = train_data["BMI"]
 
 features = ["gender", "height", "weight"]
@@ -20,3 +20,5 @@ output = pd.DataFrame(
     {'name': test_data.NAME, 'BMI': predictions})
 output.to_csv('bmi.csv', index=False)
 print("Your submission was successfully saved!")
+
+"".digits()

@@ -1,9 +1,6 @@
 
+import pandas as pd
 
-if
+data = pd.read_csv("./number.csv")
 
-for
-
-while
-
-#! tuple,list 사용법
+print(data.describe())
