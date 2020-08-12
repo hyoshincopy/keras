@@ -75,6 +75,8 @@ transform_features(x_test)
 
 
 model = keras.models.Sequential()
+
+
 # ? input_shape 인 입력 형태인데, 전체 columns의 개수는 6개인데
 # ? 그 중 학습 할 column은 NAME과 BMI를 제외한 4가지 이므로 input_shape=(4,) 가 된다
 model.add(keras.layers.Dense(32, activation='relu', input_shape=(4,)))
@@ -104,9 +106,10 @@ partial_y_train = y_train[validation_size:]
 
 
 history = model.fit(partial_x_train, partial_y_train,
-                    epochs=80, validation_data=(x_val, y_val))
+                    epochs=1000, validation_data=(x_val, y_val))
 
 
+print(model.predict(x_test))
 
 # acc = history.history['binary_accuracy']
 # val_acc = history.history['val_binary_accuracy']
