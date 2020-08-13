@@ -33,3 +33,4 @@ output = pd.DataFrame(
     {'Posture': predictions})
 output.to_csv('chair_communication_random_forest.csv', index=False)
 print("Your submission was successfully saved!")
+print("thats right")
