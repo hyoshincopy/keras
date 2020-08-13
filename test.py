@@ -106,7 +106,7 @@ partial_y_train = y_train[validation_size:]
 
 
 history = model.fit(partial_x_train, partial_y_train,
-                    epochs=1000, validation_data=(x_val, y_val))
+                    epochs=1000 b, validation_data=(x_val, y_val))
 
 
 print(model.predict(x_test))
