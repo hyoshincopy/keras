@@ -5,7 +5,7 @@ import numpy as np
 
 #! csv 파일을 불러오는 법
 df = pd.read_csv("./heart.csv")
-
+print(1)
 
 # ! 데이터 자료형 확인하는 방법 print(df.dtypes)
 df.thal = pd.Categorical(df.thal)  # * 'thal' 열은 혼자 object 이므로 이산숫자로 변환해줘야한다
